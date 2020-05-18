@@ -1,2 +1,1 @@
-# Udacity_Fyurr_App_Project
-Project 1 for Udacity Fullstack Development Course
+This is the public repository for Udacity's Full-Stack Nanodegree program.
