@@ -1,3 +1,5 @@
+from datetime import datetime, timedelta
+
 def remove_quotes(string):
   string = string.strip()
   start = 0
@@ -40,7 +42,46 @@ def format_genre_to_list(thisString):
 def add_venue_data(outerObject, model, innerObject, idName):
 	for x in outerObject[innerObject]:
 		data = model.query.get(x[idName])
-		print(data)
+		# print(data)
 		x["venue_name"] = data.name
 		x["venue_image_link"] = data.image_link
+
+
+
+def sortingPastShows(showData):
+  upcomingShows = []
+  pastShows = []
+  currentDate = datetime.now()
+
+  for s in showData:
+    if currentDate > datetime.strptime(s["start_time"], '%Y-%m-%d %H:%M:%S'):
+      pastShows.append(s)
+    else:
+      upcomingShows.append(s)
+
+  for x in upcomingShows:
+    x["start_time"] = str(x["start_time"])
+  for x in pastShows:
+    x["start_time"] = str(x["start_time"])
+
+  sorted_data = {
+        "past_shows": pastShows,
+        "upcoming_shows": upcomingShows,
+        "past_shows_count": len(pastShows),
+        "upcoming_shows_count": len(upcomingShows)
+        }
+  return sorted_data
+
+
+
+
+
+
+
+
+
+
+
+
+
 		 
