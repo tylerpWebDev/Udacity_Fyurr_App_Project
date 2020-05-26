@@ -636,7 +636,7 @@ def create_artist_submission():
                     facebook_link = request.form.get('facebook_link')
                      )
 
-  cprint(newArtist, "New Artist: ")
+  # cprint(newArtist, "New Artist: ")
 
   try:
     db.session.add(newArtist)
@@ -667,8 +667,7 @@ def shows():
   allShowData = Show.query.all()
   formattedShowData = []
 
-  cprint(allShowData[0], "All show Data: ")
-  cprint(len(allShowData), "Length: ")
+  # cprint(allShowData[0], "All show Data: ")
 
   for x in allShowData:
     print(x)
